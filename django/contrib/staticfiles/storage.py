@@ -170,9 +170,9 @@ class CachedFilesMixin(object):
             of the storage.
             """
             matched, url = matchobj.groups()
-            # Completely ignore http(s) prefixed URLs,
-            # fragments and data-uri URLs
-            if url.startswith(('#', 'http:', 'https:', 'data:', '//')):
+
+            # Ignore absolute/protocol-relative and data-uri URLs.
+            if re.match(r'^[a-z]+:', url):
                 return matched
             name_parts = name.split(os.sep)
             # Using posix normpath here to remove duplicates
