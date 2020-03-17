@@ -3,7 +3,7 @@ from importlib import import_module
 from django.utils.version import get_docs_version
 
 
-def deconstructible(*args, path=None):
+def deconstructible(path=None, *args):
     """
     Class decorator that allows the decorated class to be serialized
     by the migrations subsystem.
